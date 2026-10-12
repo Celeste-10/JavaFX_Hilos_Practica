@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="400" prefWidth="540" spacing="20" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.practicahilos.ProcesadorController">
+
+    <padding>
+        <Insets bottom="25" left="25" right="25" top="25" />
+    </padding>
+
+    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="NicaData Solutions - Monitor de Procesos">
+      <font>
+         <Font name="Elephant" size="12.0" />
+      </font></Label>
+
+    <VBox spacing="10" style="-fx-border-color: #cccccc; -fx-border-radius: 5; -fx-padding: 15;">
+        <Label style="-fx-font-weight: bold;" text="Procesamiento de Registros de Clientes" />
+
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Estado:" />
+            <Label fx:id="lblEstado" style="-fx-font-style: italic;" text="Esperando inicio" />
+        </HBox>
+
+        <ProgressBar fx:id="barraProgreso" prefWidth="480" progress="0.0" />
+
+        <HBox alignment="CENTER_RIGHT">
+            <Label fx:id="lblPorcentaje" text="0%" />
+        </HBox>
+
+        <HBox alignment="CENTER" spacing="15">
+            <Button fx:id="btnIniciar" onAction="#iniciarProceso" text="Iniciar" />
+            <Button fx:id="btnDetener" disable="true" onAction="#detenerProceso" text="Detener" />
+            <Button fx:id="btnReiniciar" onAction="#reiniciarProceso" text="Reiniciar" />
+        </HBox>
+    </VBox>
+
+</VBox>
