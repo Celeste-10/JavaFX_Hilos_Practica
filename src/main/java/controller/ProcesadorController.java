@@ -8,20 +8,27 @@ import javafx.scene.control.ProgressBar;
 import model.ProcesoModel;
 
 public class ProcesadorController {
-    @FXML private Label lblEstado;
-    @FXML private Label lblPorcentaje;
-    @FXML private ProgressBar barraProgreso;
 
-    @FXML private Button btnIniciar;
-    @FXML private Button btnDetener;
-    @FXML private Button btnReiniciar;
+    @FXML
+    private Label lblEstado;
+    @FXML
+    private Label lblPorcentaje;
+    @FXML
+    private ProgressBar barraProgreso;
+
+    @FXML
+    private Button btnIniciar;
+    @FXML
+    private Button btnDetener;
+    @FXML
+    private Button btnReiniciar;
 
     private Thread hiloProceso;
 
     @FXML
     private void iniciarProceso() {
         if (hiloProceso != null && hiloProceso.isAlive()) {
-                return;
+            return;
         }
 
         barraProgreso.setProgress(0);
@@ -47,38 +54,39 @@ public class ProcesadorController {
         hiloProceso = new Thread(tarea, "Hilo-Procesamiento-Clientes");
         hiloProceso.setDaemon(true);
         hiloProceso.start();
-        }
-        @FXML
-        private void detenerProceso() {
-            if (hiloProceso != null && hiloProceso.isAlive()) {
-                btnDetener.setDisable(true);
-                lblEstado.setText("Solicitando detención...");
-                hiloProceso.interrupt();
-            }
-        }
+    }
 
-        @FXML
-        private void reiniciarProceso() {
-            if (hiloProceso != null && hiloProceso.isAlive()) {
-                return;
-            }
-
-            barraProgreso.setProgress(0);
-            lblPorcentaje.setText("0%");
-            lblEstado.setText("Esperando inicio");
-
-            habilitarBotones();
-        }
-
-        private void habilitarBotones() {
-            btnIniciar.setDisable(false);
+    @FXML
+    private void detenerProceso() {
+        if (hiloProceso != null && hiloProceso.isAlive()) {
             btnDetener.setDisable(true);
-            btnReiniciar.setDisable(false);
+            lblEstado.setText("Solicitando detención...");
+            hiloProceso.interrupt();
+        }
+    }
+
+    @FXML
+    private void reiniciarProceso() {
+        if (hiloProceso != null && hiloProceso.isAlive()) {
+            return;
         }
 
-        public void detenerAlCerrar() {
-            if (hiloProceso != null && hiloProceso.isAlive()) {
-                hiloProceso.interrupt();
-            }
+        barraProgreso.setProgress(0);
+        lblPorcentaje.setText("0%");
+        lblEstado.setText("Esperando inicio");
+
+        habilitarBotones();
+    }
+
+    private void habilitarBotones() {
+        btnIniciar.setDisable(false);
+        btnDetener.setDisable(true);
+        btnReiniciar.setDisable(false);
+    }
+
+    public void detenerAlCerrar() {
+        if (hiloProceso != null && hiloProceso.isAlive()) {
+            hiloProceso.interrupt();
         }
+    }
 }
