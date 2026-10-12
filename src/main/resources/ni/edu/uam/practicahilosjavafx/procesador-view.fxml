@@ -11,7 +11,7 @@
         <Insets bottom="25" left="25" right="25" top="25" />
     </padding>
 
-    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="NicaData Solutions - Monitor de Procesos">
+    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="NicaData Solutions - Monitor de Procesos" textFill="#196cbf">
       <font>
          <Font name="Elephant" size="12.0" />
       </font></Label>
